@@ -21,7 +21,9 @@ export default function HomePage() {
       image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
       organizerName: "EventSphere Labs",
       organizerEmail: "hello@eventsphere.dev",
+      organizerId: "org_123",
       excerpt: "Strategy, research, and growth leaders in one room.",
+
       capacity: 250,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -40,7 +42,9 @@ export default function HomePage() {
       image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
       organizerName: "EventSphere Labs",
       organizerEmail: "hello@eventsphere.dev",
+      organizerId: "org_123",
       excerpt: "Ship a stronger design system.",
+
       capacity: 120,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -59,7 +63,9 @@ export default function HomePage() {
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
       organizerName: "EventSphere Labs",
       organizerEmail: "hello@eventsphere.dev",
+      organizerId: "org_123",
       excerpt: "Building AI that serves humanity.",
+
       capacity: 150,
       createdAt: new Date(),
       updatedAt: new Date(),
