@@ -17,8 +17,18 @@ Prisma generate/migrate fails due to Windows EPERM on query_engine-windows.dll.n
 5. Refresh http://localhost:3002
 
 ## Quick Start
-Dev server: http://localhost:3002 (running)
-Admin login: admin@eventsphere.dev / Admin@123
-Demo user: alex@example.com / User@123
+Dev: `npm run dev` → http://localhost:3000
+Admin: admin@eventsphere.dev / Admin@123
+Demo: alex@example.com / User@123
+
+## Production Deploy (Vercel/Netlify)
+1. Push to GitHub → Auto-deploy.
+2. Vercel Env Vars (from .env.example):
+   - DATABASE_URL: Neon/Supabase Postgres
+   - NEXTAUTH_SECRET: `openssl rand -base64 32`
+   - NEXTAUTH_URL: https://your-app.vercel.app
+3. Run `npx prisma db push` (schema to prod DB)
+4. Redeploy.
 
 Enjoy!
+
