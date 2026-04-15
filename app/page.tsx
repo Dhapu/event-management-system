@@ -9,6 +9,8 @@ export const dynamic = "force-dynamic";
 export default async function HomePage() {
   const featuredEvents = await getFeaturedEvents();
 
+
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <section className="grid gap-10 rounded-[36px] bg-mesh p-8 shadow-soft lg:grid-cols-[1.2fr_0.8fr] lg:p-12">

@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+
 
 import { updateUserRoleAction } from "@/app/actions/admin-actions";
 import { prisma } from "@/lib/prisma";
@@ -40,9 +40,9 @@ export default async function AdminUsersPage() {
                 <td className="px-5 py-4">
                   <div className="flex items-center gap-3">
                     <span>{user.role}</span>
-                    <form action={updateUserRoleAction.bind(null, user.id, user.role === Role.ADMIN ? Role.USER : Role.ADMIN)}>
+                    <form action={updateUserRoleAction.bind(null, user.id, user.role === "ADMIN" ? "USER" : "ADMIN")}>
                       <button type="submit" className="text-primary">
-                        {user.role === Role.ADMIN ? "Demote" : "Promote"}
+                        {user.role === "ADMIN" ? "Demote" : "Promote"}
                       </button>
                     </form>
                   </div>
@@ -56,3 +56,4 @@ export default async function AdminUsersPage() {
     </div>
   );
 }
+

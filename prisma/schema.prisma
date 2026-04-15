@@ -3,27 +3,19 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-enum Role {
-  USER
-  ADMIN
-}
-
-enum BookingStatus {
-  PENDING
-  CONFIRMED
-  CANCELLED
-}
+// Role values: USER, ADMIN
+// BookingStatus values: PENDING, CONFIRMED, CANCELLED
 
 model User {
   id        String    @id @default(cuid())
   name      String
   email     String    @unique
   password  String
-  role      Role      @default(USER)
+  role      String    @default("USER")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   bookings  Booking[]
@@ -31,25 +23,25 @@ model User {
 }
 
 model Event {
-  id             String    @id @default(cuid())
-  slug           String    @unique
+  id             String   @id @default(cuid())
+  slug           String   @unique
   title          String
   description    String
   category       String
   date           DateTime
   location       String
   venue          String?
-  price          Decimal   @db.Decimal(10, 2)
+  price          Float
   image          String?
   organizerName  String
   organizerEmail String
   organizerId    String?
   excerpt        String?
-  capacity       Int       @default(100)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  capacity       Int      @default(100)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
   bookings       Booking[]
-  organizer      User?     @relation("OrganizerEvents", fields: [organizerId], references: [id], onDelete: SetNull)
+  organizer      User?    @relation("OrganizerEvents", fields: [organizerId], references: [id], onDelete: SetNull)
 
   @@index([date])
   @@index([category])
@@ -57,17 +49,17 @@ model Event {
 }
 
 model Booking {
-  id            String        @id @default(cuid())
-  userId        String
-  eventId       String
-  quantity      Int           @default(1)
-  status        BookingStatus @default(CONFIRMED)
-  paymentStatus String        @default("paid")
-  ticketCode    String        @unique
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  event         Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id             String @id @default(cuid())
+  userId         String
+  eventId        String
+  quantity       Int    @default(1)
+  status         String @default("CONFIRMED")
+  paymentStatus  String @default("paid")
+  ticketCode     String @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  event          Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user           User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, eventId])
   @@index([createdAt])
