@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+  events    Event[]   @relation("OrganizerEvents")
+}
+
+model Event {
+  id             String    @id @default(cuid())
+  slug           String    @unique
+  title          String
+  description    String
+  category       String
+  date           DateTime
+  location       String
+  venue          String?
+  price          Decimal   @db.Decimal(10, 2)
+  image          String?
+  organizerName  String
+  organizerEmail String
+  organizerId    String?
+  excerpt        String?
+  capacity       Int       @default(100)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  bookings       Booking[]
+  organizer      User?     @relation("OrganizerEvents", fields: [organizerId], references: [id], onDelete: SetNull)
+
+  @@index([date])
+  @@index([category])
+  @@index([location])
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  userId        String
+  eventId       String
+  quantity      Int           @default(1)
+  status        BookingStatus @default(CONFIRMED)
+  paymentStatus String        @default("paid")
+  ticketCode    String        @unique
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  event         Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@index([createdAt])
+}
