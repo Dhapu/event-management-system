@@ -3,7 +3,7 @@ import type { Adapter } from "next-auth/adapters";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { Role } from "@prisma/client";
+
 
 import authConfig from "@/auth.config";
 import { prisma } from "@/lib/prisma";
@@ -60,7 +60,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub as string;
-        session.user.role = (token.role as Role | undefined) ?? Role.USER;
+(token.role as string | undefined) ?? "USER"
       }
 
       return session;

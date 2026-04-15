@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { PrismaClient, Role } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -15,7 +15,7 @@ async function main() {
         name: "Platform Admin",
         email: "admin@eventsphere.dev",
         password: adminPassword,
-        role: Role.ADMIN
+        role: "ADMIN"
       }
     }),
     prisma.user.upsert({
@@ -68,7 +68,7 @@ async function main() {
         capacity: 120
       }
     ],
-    skipDuplicates: true
+
   });
 
   const event = await prisma.event.findFirstOrThrow({

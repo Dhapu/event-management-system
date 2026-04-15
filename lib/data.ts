@@ -22,19 +22,19 @@ export async function getUpcomingEvents(rawFilters: Record<string, string | stri
   };
 
   if (filters.search) {
-    where.OR = [
-      { title: { contains: filters.search, mode: "insensitive" } },
-      { description: { contains: filters.search, mode: "insensitive" } },
-      { organizerName: { contains: filters.search, mode: "insensitive" } }
-    ];
-  }
+      where.OR = [
+        { title: { contains: filters.search } },
+        { description: { contains: filters.search } },
+        { organizerName: { contains: filters.search } }
+      ];
+    }
 
   if (filters.category) {
-    where.category = { contains: filters.category, mode: "insensitive" };
+    where.category = filters.category;
   }
 
   if (filters.location) {
-    where.location = { contains: filters.location, mode: "insensitive" };
+    where.location = filters.location;
   }
 
   if (filters.date) {
