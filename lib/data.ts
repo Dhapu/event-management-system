@@ -107,3 +107,4 @@ export async function getAdminDashboardStats() {
     ticketsIssued: revenue._sum.quantity ?? 0
   };
 }
+

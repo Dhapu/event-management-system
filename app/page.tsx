@@ -6,8 +6,67 @@ import { getFeaturedEvents } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
-export default async function HomePage() {
-  const featuredEvents = await getFeaturedEvents();
+export default function HomePage() {
+  const featuredEvents = [
+    {
+      id: "1",
+      slug: "future-of-product-summit",
+      title: "Future of Product Summit",
+      description: "A full-day summit covering AI-assisted product discovery, pricing strategy, and growth loops for digital teams.",
+      category: "Conference",
+      date: new Date(Date.now() + 86400000 * 12),
+      location: "Bengaluru",
+      venue: "Convention Hall A",
+      price: 149.0,
+      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+      organizerName: "EventSphere Labs",
+      organizerEmail: "hello@eventsphere.dev",
+      excerpt: "Strategy, research, and growth leaders in one room.",
+      capacity: 250,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      _count: { bookings: 0 }
+    },
+    {
+      id: "2",
+      slug: "design-systems-live",
+      title: "Design Systems Live",
+      description: "Practical workshop for designers and frontend engineers.",
+      category: "Workshop",
+      date: new Date(Date.now() + 86400000 * 21),
+      location: "Mumbai",
+      venue: "Studio Nine",
+      price: 79.0,
+      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+      organizerName: "EventSphere Labs",
+      organizerEmail: "hello@eventsphere.dev",
+      excerpt: "Ship a stronger design system.",
+      capacity: 120,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      _count: { bookings: 0 }
+    },
+    {
+      id: "3",
+      slug: "ai-ethics-forum",
+      title: "AI Ethics Forum",
+      description: "Responsible AI deployment workshop.",
+      category: "Forum",
+      date: new Date(Date.now() + 86400000 * 30),
+      location: "Delhi",
+      venue: "Forum Hall",
+      price: 99.0,
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+      organizerName: "EventSphere Labs",
+      organizerEmail: "hello@eventsphere.dev",
+      excerpt: "Building AI that serves humanity.",
+      capacity: 150,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      _count: { bookings: 0 }
+    }
+  ];
+
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">

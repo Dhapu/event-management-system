@@ -1,0 +1,1 @@
+# Fix Errors - Dev Server + DB\n\n- [x] Fixed dev EPERM (spawn)\n- [ ] 1. Switch Prisma to SQLite\n- [ ] 2. prisma generate\n- [ ] 3. prisma migrate dev --name init\n- [ ] 4. tsx prisma/seed.ts\n- [ ] 5. Restart dev & test localhost:3002
