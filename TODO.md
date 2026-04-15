@@ -1,16 +1,9 @@
-# Event Management System TODO
+# Task Progress: Add homepage to package.json
 
-## Deployment Fixes (Netlify)
-- [ ] Connect GitHub blackboxai/error-fixes to Netlify
-- [ ] Build command: `npm run build`
-- [ ] Publish dir: `.next`
-- [ ] Clear cache & deploy after postinstall added
-- [ ] Prod DB (PlanetScale/Neon)
+## Pending Steps
+1. [x] Edit package.json to add \"homepage\": \"https://Dhapu.github.io/repo-name\"
+2. [ ] Test build: npm run build
+3. [ ] Deploy if needed: npx gh-pages -d .next
 
-## Local Dev ✅
-- [x] Prisma migrate/seed/DB data
-- [x] data.ts search
-- [x] CSS/layout
-- [x] Fixes committed/pushed
-
-Enjoy! http://localhost:3002
+## Completed Steps
+- Updated package.json with homepage field.

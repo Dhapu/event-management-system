@@ -1,9 +1,12 @@
 {
   "name": "event-management-system",
+  "homepage": "https://Dhapu.github.io/repo-name",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "postinstall": "prisma generate",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
@@ -44,6 +47,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9.14.0",
     "eslint-config-next": "^15.5.2",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.49",
     "prisma": "^5.22.0",
     "tailwindcss": "^3.4.15",
